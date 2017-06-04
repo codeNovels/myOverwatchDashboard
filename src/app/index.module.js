@@ -21,6 +21,12 @@
             'app.quick-panel',
 
             // Leader Board
-            'app.leaderboard'
+            'app.leaderboard',
+
+            // Hero Board
+            'app.heroboard',
+
+            // Patch Note
+            'app.patchnote'
         ]);
 })();

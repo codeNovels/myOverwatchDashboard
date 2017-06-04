@@ -3,7 +3,7 @@
     'use strict';
 
     angular
-        .module('app.leaderboard', [])
+        .module('app.heroboard', [])
         .config(config);
 
     /** @ngInject */
@@ -11,27 +11,27 @@
     {
         // State
         $stateProvider
-            .state('app.leaderboard', {
-                url    : '/leaderboard',
+            .state('app.heroboard', {
+                url    : '/heroboard',
                 views  : {
                     'content@app': {
-                        templateUrl: 'app/main/leaderboard/leaderboard.html',
-                        controller : 'LeaderboardController as vm'
+                        templateUrl: 'app/main/heroboard/heroboard.html',
+                        controller : 'HeroboardController as vm'
                     }
                 },
                 resolve: {
                     Data: function (msApi)
                     {
-                        return msApi.resolve('leaderboard@get');
+                        return msApi.resolve('heroboard@get');
                     }
                 }
             });
 
         // Translation
-        $translatePartialLoaderProvider.addPart('app/main/leaderboard');
+        $translatePartialLoaderProvider.addPart('app/main/heroboard');
 
         // Api
-        msApiProvider.register('leaderboard', ['app/data/leaderboard/leaderboard.json']);
+        msApiProvider.register('heroboard', ['app/data/heroboard/heroboard.json']);
 
         // Navigation
         msNavigationServiceProvider.saveItem('fuse', {
@@ -40,14 +40,14 @@
             weight: 1
         });
 
-        msNavigationServiceProvider.saveItem('fuse.leaderboard', {
+        msNavigationServiceProvider.saveItem('fuse.heroboard', {
             title    : 'Leader Board',
-            icon     : 'icon-earth',
-            state    : 'app.leaderboard',
+            icon     : 'icon-chart-bar',
+            state    : 'app.heroboard',
             /*stateParams: {
                 'param1': 'page'
              },*/
-            translate: 'LEADERBOARD.LEADERBOARD_NAV',
+            translate: 'HEROBOARD.HEROBOARD_NAV',
             weight   : 1
         });
     }

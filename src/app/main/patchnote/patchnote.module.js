@@ -3,7 +3,7 @@
     'use strict';
 
     angular
-        .module('app.leaderboard', [])
+        .module('app.patchnote', [])
         .config(config);
 
     /** @ngInject */
@@ -11,27 +11,27 @@
     {
         // State
         $stateProvider
-            .state('app.leaderboard', {
-                url    : '/leaderboard',
+            .state('app.patchnote', {
+                url    : '/patchnote',
                 views  : {
                     'content@app': {
-                        templateUrl: 'app/main/leaderboard/leaderboard.html',
-                        controller : 'LeaderboardController as vm'
+                        templateUrl: 'app/main/patchnote/patchnote.html',
+                        controller : 'PatchnoteController as vm'
                     }
                 },
                 resolve: {
                     Data: function (msApi)
                     {
-                        return msApi.resolve('leaderboard@get');
+                        return msApi.resolve('patchnote@get');
                     }
                 }
             });
 
         // Translation
-        $translatePartialLoaderProvider.addPart('app/main/leaderboard');
+        $translatePartialLoaderProvider.addPart('app/main/patchnote');
 
         // Api
-        msApiProvider.register('leaderboard', ['app/data/leaderboard/leaderboard.json']);
+        msApiProvider.register('patchnote', ['app/data/patchnote/patchnote.json']);
 
         // Navigation
         msNavigationServiceProvider.saveItem('fuse', {
@@ -40,14 +40,14 @@
             weight: 1
         });
 
-        msNavigationServiceProvider.saveItem('fuse.leaderboard', {
+        msNavigationServiceProvider.saveItem('fuse.patchnote', {
             title    : 'Leader Board',
-            icon     : 'icon-earth',
-            state    : 'app.leaderboard',
+            icon     : 'icon-newspaper',
+            state    : 'app.patchnote',
             /*stateParams: {
                 'param1': 'page'
              },*/
-            translate: 'LEADERBOARD.LEADERBOARD_NAV',
+            translate: 'PATCHNOTE.PATCHNOTE_NAV',
             weight   : 1
         });
     }
