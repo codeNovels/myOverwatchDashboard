@@ -3,11 +3,11 @@
     'use strict';
 
     angular
-        .module('app.leaderboard')
-        .controller('LeaderboardController', LeaderboardController);
+        .module('app.channels')
+        .controller('ChannelsController', ChannelsController);
 
     /** @ngInject */
-    function LeaderboardController(Data)
+    function ChannelsController(Data)
     {
         var vm = this;
 

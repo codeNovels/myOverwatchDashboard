@@ -3,11 +3,11 @@
     'use strict';
 
     angular
-        .module('app.heroboard')
-        .controller('HeroboardController', HeroboardController);
+        .module('app.games')
+        .controller('GamesController', GamesController);
 
     /** @ngInject */
-    function HeroboardController(Data)
+    function GamesController(Data)
     {
         var vm = this;
 

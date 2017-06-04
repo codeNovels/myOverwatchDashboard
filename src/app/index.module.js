@@ -20,13 +20,10 @@
             // Quick Panel
             'app.quick-panel',
 
-            // Leader Board
-            'app.leaderboard',
+            // Browse Games
+            'app.games',
 
-            // Hero Board
-            'app.heroboard',
-
-            // Patch Note
-            'app.patchnote'
+            // Channels
+            'app.channels'
         ]);
 })();

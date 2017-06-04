@@ -3,7 +3,7 @@
     'use strict';
 
     angular
-        .module('app.heroboard', [])
+        .module('app.games', [])
         .config(config);
 
     /** @ngInject */
@@ -11,27 +11,27 @@
     {
         // State
         $stateProvider
-            .state('app.heroboard', {
-                url    : '/heroboard',
+            .state('app.games', {
+                url    : '/games',
                 views  : {
                     'content@app': {
-                        templateUrl: 'app/main/heroboard/heroboard.html',
-                        controller : 'HeroboardController as vm'
+                        templateUrl: 'app/main/games/games.html',
+                        controller : 'GamesController as vm'
                     }
                 },
                 resolve: {
                     Data: function (msApi)
                     {
-                        return msApi.resolve('heroboard@get');
+                        return msApi.resolve('games@get');
                     }
                 }
             });
 
         // Translation
-        $translatePartialLoaderProvider.addPart('app/main/heroboard');
+        $translatePartialLoaderProvider.addPart('app/main/games');
 
         // Api
-        msApiProvider.register('heroboard', ['app/data/heroboard/heroboard.json']);
+        msApiProvider.register('games', ['app/data/games/games.json']);
 
         // Navigation
         msNavigationServiceProvider.saveItem('fuse', {
@@ -40,14 +40,14 @@
             weight: 1
         });
 
-        msNavigationServiceProvider.saveItem('fuse.heroboard', {
-            title    : 'Leader Board',
-            icon     : 'icon-chart-bar',
-            state    : 'app.heroboard',
+        msNavigationServiceProvider.saveItem('fuse.games', {
+            title    : 'Games',
+            icon     : 'icon-gamepad-variant',
+            state    : 'app.games',
             /*stateParams: {
                 'param1': 'page'
              },*/
-            translate: 'HEROBOARD.HEROBOARD_NAV',
+            translate: 'GAMES.GAMES_NAV',
             weight   : 1
         });
     }

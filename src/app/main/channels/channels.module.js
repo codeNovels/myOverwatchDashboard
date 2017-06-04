@@ -3,7 +3,7 @@
     'use strict';
 
     angular
-        .module('app.leaderboard', [])
+        .module('app.channels', [])
         .config(config);
 
     /** @ngInject */
@@ -11,27 +11,27 @@
     {
         // State
         $stateProvider
-            .state('app.leaderboard', {
-                url    : '/leaderboard',
+            .state('app.channels', {
+                url    : '/channels',
                 views  : {
                     'content@app': {
-                        templateUrl: 'app/main/leaderboard/leaderboard.html',
-                        controller : 'LeaderboardController as vm'
+                        templateUrl: 'app/main/channels/channels.html',
+                        controller : 'ChannelsController as vm'
                     }
                 },
                 resolve: {
                     Data: function (msApi)
                     {
-                        return msApi.resolve('leaderboard@get');
+                        return msApi.resolve('channels@get');
                     }
                 }
             });
 
         // Translation
-        $translatePartialLoaderProvider.addPart('app/main/leaderboard');
+        $translatePartialLoaderProvider.addPart('app/main/channels');
 
         // Api
-        msApiProvider.register('leaderboard', ['app/data/leaderboard/leaderboard.json']);
+        msApiProvider.register('channels', ['app/data/channels/channels.json']);
 
         // Navigation
         msNavigationServiceProvider.saveItem('fuse', {
@@ -40,14 +40,14 @@
             weight: 1
         });
 
-        msNavigationServiceProvider.saveItem('fuse.leaderboard', {
-            title    : 'Leader Board',
-            icon     : 'icon-earth',
-            state    : 'app.leaderboard',
+        msNavigationServiceProvider.saveItem('fuse.channels', {
+            title    : 'Channels',
+            icon     : 'icon-television',
+            state    : 'app.channels',
             /*stateParams: {
                 'param1': 'page'
              },*/
-            translate: 'LEADERBOARD.LEADERBOARD_NAV',
+            translate: 'CHANNELS.CHANNELS_NAV',
             weight   : 1
         });
     }
