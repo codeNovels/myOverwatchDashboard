@@ -3,7 +3,7 @@
     'use strict';
 
     angular
-        .module('app.sample', [])
+        .module('app.leaderboard', [])
         .config(config);
 
     /** @ngInject */
@@ -11,43 +11,43 @@
     {
         // State
         $stateProvider
-            .state('app.sample', {
-                url    : '/sample',
+            .state('app.leaderboard', {
+                url    : '/leaderboard',
                 views  : {
                     'content@app': {
-                        templateUrl: 'app/main/sample/sample.html',
-                        controller : 'SampleController as vm'
+                        templateUrl: 'app/main/leaderboard/leaderboard.html',
+                        controller : 'LeaderboardController as vm'
                     }
                 },
                 resolve: {
-                    SampleData: function (msApi)
+                    Data: function (msApi)
                     {
-                        return msApi.resolve('sample@get');
+                        return msApi.resolve('leaderboard@get');
                     }
                 }
             });
 
         // Translation
-        $translatePartialLoaderProvider.addPart('app/main/sample');
+        $translatePartialLoaderProvider.addPart('app/main/leaderboard');
 
         // Api
-        msApiProvider.register('sample', ['app/data/sample/sample.json']);
+        msApiProvider.register('leaderboard', ['app/data/leaderboard/leaderboard.json']);
 
         // Navigation
         msNavigationServiceProvider.saveItem('fuse', {
-            title : 'SAMPLE',
+            title : 'Navigation',
             group : true,
             weight: 1
         });
 
-        msNavigationServiceProvider.saveItem('fuse.sample', {
-            title    : 'Sample',
+        msNavigationServiceProvider.saveItem('fuse.leaderboard', {
+            title    : 'Leader Board',
             icon     : 'icon-tile-four',
-            state    : 'app.sample',
+            state    : 'app.leaderboard',
             /*stateParams: {
                 'param1': 'page'
              },*/
-            translate: 'SAMPLE.SAMPLE_NAV',
+            translate: 'LEADERBOARD.LEADERBOARD_NAV',
             weight   : 1
         });
     }
